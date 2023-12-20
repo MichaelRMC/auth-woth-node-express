@@ -20,10 +20,10 @@ function App() {
 			<Reset />
 			<Router>
 				<Routes>
-					<PublicRoute path='/login'></PublicRoute>
-					<PublicRoute path='/signup'></PublicRoute>
-					<Route path='/'></Route>
-          <ProtectedRoute path='/user/:id'></ProtectedRoute>
+          <PublicRoute path='/login' component={ <Login /> }></PublicRoute>
+					<PublicRoute path='/signup' component={<SignUp />}></PublicRoute>
+					<Route path='/' component={<UserPortal />}></Route>
+          <ProtectedRoute path='/users/:id/profile'></ProtectedRoute>
 				</Routes>
 			</Router>
 		</>
