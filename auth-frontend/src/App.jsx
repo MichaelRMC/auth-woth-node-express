@@ -16,18 +16,18 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   return (
-    <>
-    <Reset />
-      <Router>
-        <Routes>
-          {/* PUBLIC ROUTE FOR LOGIN */}
-          {/* PUBLIC ROUTE SIGNUP */}
-          {/* ROUTE FOR "/" WITH REDIRECT TO LOGIN ROUTE */}
-          {/* ROUTE TO USER PROFILE ROUTE WITH WILDCARD MATCHER */}
-        </Routes>
-      </Router>
-    </>
-  );
+		<>
+			<Reset />
+			<Router>
+				<Routes>
+					<PublicRoute path='/login'></PublicRoute>
+					<PublicRoute path='/signup'></PublicRoute>
+					<Route path='/'></Route>
+          <ProtectedRoute path='/user/:id'></ProtectedRoute>
+				</Routes>
+			</Router>
+		</>
+	);
 }
 
 export default App;

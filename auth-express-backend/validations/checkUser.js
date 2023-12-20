@@ -1,14 +1,40 @@
-const checkName = (req, res, next) => {
-    // checking if the req.body has a NAME
-    if(req.body.name){
-        console.log("name is okay")
+const checkFirstName = (req, res, next) => {
+    if(req.body.firstname){
+        console.log("firstname is okay")
         // next allows our express middleware to pass the req, and res to the next functons
         next()
     } else {
         // send the res and end the request
-        res.status(400).json({ error: "Name is required!" })
+        res.status(400).json({ error: "First Name is required!" })
     }
 }
+const checkLastName = (req, res, next) => {
+	if (req.body.lastname) {
+		console.log("lastname is okay");
+		next();
+	} else {
+		res.status(400).json({ error: "Last Name is required!" });
+	}
+};
+
+
+const checkEmail = (req, res, next) => {
+	if (req.body.firstname) {
+		console.log("firstname is okay");
+		next();
+	} else {
+		res.status(400).json({ error: "Email is required!" });
+	}
+};
+
+const checkPassword = (req, res, next) => {
+	if (req.body.password) {
+		console.log("password is okay");
+		next();
+	} else {
+		res.status(400).json({ error: "First Name is required!" });
+	}
+};
 
 const checkBoolean = (req, res, next) => {
     // check if we have an is favortie value
@@ -22,6 +48,9 @@ const checkBoolean = (req, res, next) => {
 }
 
 module.exports = {
-    checkName,
+    checkFirstName,
+    checkLastName,
+    checkEmail,
+    checkPassword,
     checkBoolean
 }

@@ -31,7 +31,7 @@ users.post( "/", async ( req, res ) =>
 {
   try {
     const { firstname, lastname, email, password } = req.body;
-    if (!firstname,!lastname,!email && !password) {
+    if (!firstname || !lastname || !email || !password) {
       return res.status(403).json({Error: "All Fields are required!"})
     }
     const saltRounds = await bcrypt.genSalt( 10 );
@@ -40,7 +40,7 @@ users.post( "/", async ( req, res ) =>
     return res.status(201).json({message: "Congratulations, your account has been successfully created!"})
     
   } catch (error) {
-    
+    return res.status(400).json({Error: "An error has occurred. We apologize for the inconvience. "})
   }
   
 });
