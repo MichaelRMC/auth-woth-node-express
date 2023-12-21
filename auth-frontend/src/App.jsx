@@ -17,13 +17,31 @@ function App() {
 
   return (
 		<>
-			<Reset />
+		<Reset />
 			<Router>
-				<Routes>
-          <PublicRoute path='/login' component={ <Login /> }></PublicRoute>
-					<PublicRoute path='/signup' component={<SignUp />}></PublicRoute>
-					<Route path='/' component={<UserPortal />}></Route>
-          <ProtectedRoute path='/users/:id/profile'></ProtectedRoute>
+			  <Routes>
+				  <Route path='/login'
+					  element={ <PublicRoute
+					  element={ Login }
+					  currentUser={ currentUser }
+					  setCurrentUser={ setCurrentUser } />
+				  }
+					/>
+				  <Route path='/' element={ Navigate to="/login"}/>
+				  <Route path='/signup'
+					  	  element={ <PublicRoute
+						  element={ SignUp }
+						  currentUser={ currentUser }
+						  setCurrentUser={ setCurrentUser } />
+					  }
+				  />
+				  <Route path='/users/:id/profile'
+					  element={ <ProtectedRoute
+					  element={ UserPortal }
+					  currentUser={ currentUser }
+					setCurrentUser={ setCurrentUser } />
+					  }
+				  />
 				</Routes>
 			</Router>
 		</>
